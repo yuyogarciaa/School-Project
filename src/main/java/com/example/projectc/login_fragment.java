@@ -57,8 +57,8 @@ public class login_fragment extends Fragment {
                             if(response.equalsIgnoreCase("Ingresaste Correctamente")) {
                                 email.setText("");
                                 pass.setText("");
-                                //Intent intent = new Intent(getActivity(), logUser.class);
-                                //startActivity(intent);
+                                Intent intent = new Intent(getActivity(), Welcome.class);
+                                startActivity(intent);
                                 Toast.makeText(getContext().getApplicationContext(), response, Toast.LENGTH_SHORT).show();
                             }
                         }
