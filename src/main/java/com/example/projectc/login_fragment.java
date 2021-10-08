@@ -62,6 +62,8 @@ public class login_fragment extends Fragment {
                                 Intent intent = new Intent(getActivity(), Welcome.class);
                                 startActivity(intent);
                                 Toast.makeText(getContext().getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(getContext().getApplicationContext(), response, Toast.LENGTH_SHORT).show();
                             }
                         }
                     }, new Response.ErrorListener() {
