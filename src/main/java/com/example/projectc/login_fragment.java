@@ -19,12 +19,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.material.internal.NavigationMenuView;
+
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class login_fragment extends Fragment {
+
 
     String str_email,str_password;
     String url="https://projects-insane.000webhostapp.com/login/validar.php";
@@ -36,7 +37,8 @@ public class login_fragment extends Fragment {
         EditText email = root.findViewById(R.id.email);
         EditText pass = root.findViewById(R.id.pass);
         TextView forget = root.findViewById(R.id.textviewforget);
-        Button login = root.findViewById(R.id.buttonlogin);
+        Button login = root.findViewById(R.id.btnlogin);
+
         float v = 0;
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +56,7 @@ public class login_fragment extends Fragment {
                     StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            if(response.equalsIgnoreCase("Ingresaste Correctamente")) {
+                            if (response.equalsIgnoreCase("you entered correctly")) {
                                 email.setText("");
                                 pass.setText("");
                                 Intent intent = new Intent(getActivity(), Welcome.class);
@@ -65,7 +67,7 @@ public class login_fragment extends Fragment {
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(getContext().getApplicationContext(), error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext().getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                     ) {
@@ -83,6 +85,14 @@ public class login_fragment extends Fragment {
             }
         });
 
+        forget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),forget_pass.class);
+                startActivity(intent);
+            }
+        });
+
         email.setTranslationX(800);
         pass.setTranslationX(800);
         forget.setTranslationX(800);
@@ -97,10 +107,6 @@ public class login_fragment extends Fragment {
         pass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
         forget.animate().translationX(0).alpha(1).setDuration(800).setDuration(500).start();
         login.animate().translationX(0).alpha(1).setDuration(800).setDuration(800).start();
-
-
         return root;
-
     }
-
 }
