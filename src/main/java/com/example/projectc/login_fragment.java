@@ -27,6 +27,8 @@ import java.util.Map;
 public class login_fragment extends Fragment {
 
 
+    boolean fp=true;
+    int chace = 2;
     String str_email,str_password;
     String url="https://projects-insane.000webhostapp.com/login/validar.php";
 
@@ -61,9 +63,16 @@ public class login_fragment extends Fragment {
                                 pass.setText("");
                                 Intent intent = new Intent(getActivity(), Welcome.class);
                                 startActivity(intent);
+                                chace=0;
                                 Toast.makeText(getContext().getApplicationContext(), response, Toast.LENGTH_SHORT).show();
-                            }else{
+                            }else if(chace==0){
+                                Toast.makeText(getContext().getApplicationContext(),"Reset Password",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getActivity(), forget_pass.class);
+                                startActivity(intent);
+                                login.setEnabled(false);
+                            }else if(response.equalsIgnoreCase("wrong password or email")){
                                 Toast.makeText(getContext().getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                                chace=chace-1;
                             }
                         }
                     }, new Response.ErrorListener() {
