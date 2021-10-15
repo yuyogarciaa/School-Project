@@ -67,7 +67,6 @@ public class signup_fragment extends Fragment {
                             pass.setText("");
                             user.setText("");
                             Toast.makeText(getContext().getApplicationContext(), response, Toast.LENGTH_SHORT).show();
-
                         }
                     }, new Response.ErrorListener() {
                         @Override
